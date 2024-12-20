@@ -1,10 +1,12 @@
-package com.facerecognition;
+package com.presentation;
 
+import com.facerecognition.MatToImageConverter;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import nu.pattern.OpenCV;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
@@ -18,7 +20,7 @@ public class App extends Application {
   @Override
   public void start(Stage stage) {
     // Charger la bibliothèque native OpenCV
-    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    OpenCV.loadLocally();
 
     // Initialiser la caméra et le détecteur de visages
     camera = new VideoCapture(0); // 0 pour la caméra par défaut
@@ -27,7 +29,7 @@ public class App extends Application {
       System.exit(1);
     }
 
-    faceDetector = new CascadeClassifier("facerecognition/src/main/resources/com/files/haarcascade_frontalface_alt.xml");
+    faceDetector = new CascadeClassifier("C:\\Users\\bilal\\IdeaProjects\\Face-Recognition\\src\\main\\resources\\com\\files\\haarcascade_frontalface_alt.xml");
     if (faceDetector.empty()) {
       System.err.println("Erreur : Impossible de charger le fichier cascade.");
       System.exit(1);

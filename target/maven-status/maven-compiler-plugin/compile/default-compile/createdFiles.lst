@@ -1,2 +1,6 @@
 module-info.class
 com\facerecognition\App.class
+com\facerecognition\MatToImageConverter.class
+com\dao\entities\User.class
+com\services\FaceRecognitionModel.class
+com\dao\DatabaseUtils.class
