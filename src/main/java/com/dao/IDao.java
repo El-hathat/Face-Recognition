@@ -8,7 +8,7 @@ public interface IDao<T, K> {
 
     List<T> findAll();
 
-    void save(T entity);
+    boolean save(T entity);
 
     void update(T entity);
 
