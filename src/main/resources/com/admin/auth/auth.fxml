@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.auth.AuthController">
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/app-logo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="username" maxWidth="350.0" promptText="Nom d'utilisateur" styleClass="form-control">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="password" maxWidth="350.0" promptText="Mot de passe" styleClass="form-control" />
+                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#login" text="S'authentifier">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-primary" />
+                        <String fx:value="btn-lg" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+            <HBox fx:id="alertContainer" alignment="CENTER" spacing="10.0" styleClass="alert" visible="false">
+               <children>
+                  <ProgressIndicator fx:id="loginSpinner" maxHeight="25.0" maxWidth="25.0" />
+                  <Text fx:id="alertMessage" styleClass="strong" text="Hello" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="bg-primary" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Bienvenue !" />
+         </children>
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+      </VBox>
+   </left>
+</BorderPane>
