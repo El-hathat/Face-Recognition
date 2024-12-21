@@ -1,11 +1,15 @@
 package com.presentation.admin.users;
 
 import com.dao.entities.User;
+import com.presentation.admin.AppController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 
 public class UsersController {
 
@@ -108,6 +112,23 @@ public class UsersController {
             });
             return row;
         });
+    }
+
+    @FXML
+    void addNewUser(ActionEvent event) {
+        System.out.println("Add new user");
+        loadFXMLContent("/com/admin/users/add.fxml");
+
+    }
+
+    private void loadFXMLContent(String fxmlFile) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Pane newContent = loader.load();
+            AppController.MAIN_BORDER_PANEL.setCenter(newContent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 
 public class AppController {
 
+    public static BorderPane MAIN_BORDER_PANEL = null;
+
     @FXML
     public BorderPane mainBorderPane;
 
@@ -16,6 +18,8 @@ public class AppController {
     public void initialize() {
         // This method is automatically called after the FXML is loaded
         dashboardOnAction(null);
+
+        MAIN_BORDER_PANEL = mainBorderPane;
     }
 
     @FXML
