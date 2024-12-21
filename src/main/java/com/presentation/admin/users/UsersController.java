@@ -1,7 +1,9 @@
 package com.presentation.admin.users;
 
 import com.dao.entities.User;
+import com.presentation.admin.AppConfig;
 import com.presentation.admin.AppController;
+import com.services.users.IUsersService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 public class UsersController {
+
+    private IUsersService usersService = AppConfig.USERS_SERVICE;
 
     @FXML
     private TableView<User> usersTableView;
@@ -55,8 +59,8 @@ public class UsersController {
         // Create and populate the data
         users = FXCollections.observableArrayList(
                 new User(1L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true),
-                new User(1L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true),
-                new User(1L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true)
+                new User(2L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true),
+                new User(3L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true)
         );
 
         // Set the data in the TableView
@@ -82,6 +86,8 @@ public class UsersController {
         viewItem.setOnAction(event -> {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
+                SharedData.setUserId(selectedPerson.getId());
+                loadFXMLContent("/com/admin/users/view.fxml");
                 System.out.println("View: " + selectedPerson.getName());
             }
         });
@@ -89,6 +95,8 @@ public class UsersController {
         updateItem.setOnAction(event -> {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
+                SharedData.setUserId(selectedPerson.getId());
+                loadFXMLContent("/com/admin/users/view.fxml");
                 System.out.println("Update: " + selectedPerson.getName());
             }
         });
@@ -96,8 +104,11 @@ public class UsersController {
         deleteItem.setOnAction(event -> {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
-                System.out.println("Delete: " + selectedPerson.getName());
-                users.remove(selectedPerson);
+                if (usersService.deleteUser(selectedPerson)) {
+                    users.remove(selectedPerson);
+                } else {
+                    System.out.println("Error deleting user");
+                }
             }
         });
 
@@ -116,7 +127,6 @@ public class UsersController {
 
     @FXML
     void addNewUser(ActionEvent event) {
-        System.out.println("Add new user");
         loadFXMLContent("/com/admin/users/add.fxml");
 
     }

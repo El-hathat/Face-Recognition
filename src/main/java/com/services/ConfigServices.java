@@ -2,6 +2,8 @@ package com.services;
 
 import com.dao.AdminDaoImpl;
 import com.dao.IAdminDao;
+import com.dao.IUserDao;
+import com.dao.UserDaoImpl;
 import com.facerecognition.RecognitionInDB;
 
 public class ConfigServices {
@@ -11,6 +13,8 @@ public class ConfigServices {
     public static final int SALT_LENGTH = 16;
 
     public static final IAdminDao ADMIN_DAO = new AdminDaoImpl();
+
+    public static final IUserDao USER_DAO = new UserDaoImpl();
 
     public static final IFaceRecognitionService FACERECOGNITIONIMPL=new RecognitionInDB();
 

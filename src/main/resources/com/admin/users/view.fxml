@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+
+<VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.users.ViewUserController">
+    <children>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User information">
+            <styleClass>
+                <String fx:value="h2" />
+                <String fx:value="strong" />
+            </styleClass>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </Text>
+        <ImageView fx:id="userImage" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/app-logo.png" />
+            </image>
+        </ImageView>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0" VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="ID" />
+                        <TextField fx:id="id" disable="true" editable="false" promptText="ID" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="Name" />
+                        <TextField fx:id="name" promptText="Name" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="Email" />
+                        <TextField fx:id="email" promptText="ex: mail@example.com" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="Tel" />
+                        <TextField fx:id="tel" promptText="ex: 06004556" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="Passcode" />
+                        <TextField fx:id="passcode" promptText="ex: 45665" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" styleClass="strong" text="Image" />
+                        <TextField fx:id="imagepath" promptText="image path" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#openFileChooser">
+                            <styleClass>
+                                <String fx:value="btn" />
+                                <String fx:value="btn-info" />
+                            </styleClass>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../images/icons/image.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox spacing="12.0">
+                    <children>
+                        <Label prefWidth="120.0" />
+                        <CheckBox fx:id="active" mnemonicParsing="false" selected="true" text="Active" />
+                    </children>
+                    <padding>
+                        <Insets top="8.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#updateUser" text="Update">
+                            <styleClass>
+                                <String fx:value="btn" />
+                                <String fx:value="btn-success" />
+                            </styleClass>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../images/icons/save.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+    <padding>
+        <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+    </padding>
+</VBox>

@@ -1,8 +1,8 @@
 package com.presentation.admin.users;
 
-import com.dao.IUserDao;
 import com.dao.entities.User;
 import com.presentation.admin.AppConfig;
+import com.services.users.IUsersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -16,7 +16,7 @@ import java.io.File;
 
 public class AddUserController {
 
-    private IUserDao userDao = AppConfig.USER_DAO;
+    private IUsersService usersService = AppConfig.USERS_SERVICE;
 
     @FXML
     private TextField imagepath;
@@ -119,7 +119,7 @@ public class AddUserController {
             user.setImagePath(imagePathStr);
             user.setActive(activeBool);
 
-            if (userDao.save(user)) {
+            if (usersService.addUser(user)) {
                 showSuccessAlert("User saved successfully");
             } else {
                 showErrorAlert("An error occurred while saving the user");
