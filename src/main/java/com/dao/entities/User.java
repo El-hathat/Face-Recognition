@@ -8,6 +8,7 @@ public class User {
     private String passCode;
     private String imagePath;
     private boolean active;
+
     public User(){}
 
     public User(Long id, String name, String email, String tel, String passCode, String imagePath, boolean isActive) {
