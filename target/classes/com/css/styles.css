@@ -1,0 +1,44 @@
+/* Style for all text input fields */
+.form-control {
+    -fx-font-size: 15px;
+    -fx-padding: 10px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #f9f9f9;
+    -fx-prompt-text-fill: #aaa;
+    -fx-text-fill: #333;
+}
+
+/* Focus effect */
+.form-control:focused {
+    -fx-border-color: #007bff; /* Blue border when focused */
+    -fx-background-color: #ffffff;
+    -fx-prompt-text-fill: #bbb;
+}
+
+.vertical-menu-item {
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-background-color: none;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.vertical-menu-item .graphic {
+    -fx-graphic-text-gap: 8; /* Space between the image and the text */
+}
+
+.vertical-menu-item:hover {
+    -fx-background-color: #0061ca; /* Change background on hover */
+}
+
+.vertical-menu-item:pressed {
+    -fx-background-color:  #0061ca; /* Change background when pressed */
+}
+
+
