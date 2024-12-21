@@ -3,21 +3,22 @@ package com.dao.entities;
 public class User {
     private Long id;
     private String name;
+    private  String email;
+    private String tel;
+    private String passCode;
+    private String imagePath;
+    private boolean isActive;
+    public User(){}
 
-    public User(Long id, String name, String email, String tel, String passCode, String imagePath) {
+    public User(Long id, String name, String email, String tel, String passCode, String imagePath, boolean isActive) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.tel = tel;
         this.passCode = passCode;
         this.imagePath = imagePath;
+        this.isActive = isActive;
     }
-
-    private  String email;
-    private String tel;
-    private String passCode;
-    private String imagePath;
-    public User(){}
 
     public Long getId() {
         return id;
@@ -65,5 +66,13 @@ public class User {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

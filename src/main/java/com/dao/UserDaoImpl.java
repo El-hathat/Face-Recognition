@@ -31,7 +31,7 @@ public class UserDaoImpl implements IUserDao {
             ResultSet set = st.executeQuery(query);
             List<User> users = null;
             while (set.next()) {
-                User user = new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("tel"), set.getString("passcode"), set.getString("imagepath"));
+                User user = new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("tel"), set.getString("passcode"), set.getString("imagepath"),set.getBoolean("isactive"));
                 users.add(user);
             }
         } catch (SQLException e) {

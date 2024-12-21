@@ -15,7 +15,7 @@ public class RecognitionInDB implements IFaceRecognitionService {
 
       for (User user1:users) {
         String image = user1.getImagePath();
-        if (tensorService.testFaces(tensorService.imageToMat(image), frame)) {
+        if (tensorService.testFaces(tensorService.imageToMat(image), frame) && user1.isActive()) {
           user=user1;
           break;
         }
