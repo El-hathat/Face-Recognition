@@ -47,17 +47,17 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
-    public void update(User entity) {
-
+    public boolean update(User entity) {
+        return false;
     }
 
     @Override
-    public void delete(User entity) {
-
+    public boolean delete(User entity) {
+        return false;
     }
 
     @Override
-    public void deleteById(Long entityId) {
-
+    public boolean deleteById(Long entityId) {
+        return false;
     }
 }

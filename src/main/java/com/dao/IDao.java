@@ -8,13 +8,14 @@ public interface IDao<T, K> {
 
     List<T> findAll();
 
+
     boolean save(T entity);
 
-    void update(T entity);
+    boolean update(T entity);
 
-    void delete(T entity);
+    boolean delete(T entity);
 
-    void deleteById(K entityId);
+    boolean deleteById(K entityId);
 
 
 }
