@@ -42,8 +42,8 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
-    public void save(User entity) {
-
+    public boolean save(User entity) {
+        return false;
     }
 
     @Override
