@@ -26,4 +26,7 @@ module com.facerecognition {
     opens com.services to javafx.fxml;
     exports com.services.auth;
     opens com.services.auth to javafx.fxml;
+
+    opens com.presentation.admin.users to javafx.fxml;
+    opens com.dao.entities to javafx.base;
 }

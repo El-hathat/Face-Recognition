@@ -19,7 +19,7 @@
 }
 
 .vertical-menu-item {
-    -fx-alignment: center;
+    -fx-alignment: center-left;
     -fx-padding: 10;
     -fx-background-color: none;
     -fx-font-size: 15px;

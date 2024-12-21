@@ -7,7 +7,7 @@ public class User {
     private String tel;
     private String passCode;
     private String imagePath;
-    private boolean isActive;
+    private boolean active;
     public User(){}
 
     public User(Long id, String name, String email, String tel, String passCode, String imagePath, boolean isActive) {
@@ -17,7 +17,7 @@ public class User {
         this.tel = tel;
         this.passCode = passCode;
         this.imagePath = imagePath;
-        this.isActive = isActive;
+        this.active = isActive;
     }
 
     public Long getId() {
@@ -69,10 +69,10 @@ public class User {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.active = active;
     }
 }

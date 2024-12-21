@@ -25,7 +25,7 @@ public class AppController {
 
     @FXML
     void usersOnAction(ActionEvent event) {
-        loadFXMLContent("/com/admin/users.fxml");
+        loadFXMLContent("/com/admin/users/users.fxml");
     }
 
     @FXML

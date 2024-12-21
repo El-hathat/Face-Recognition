@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddUserController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add new user">
+         <styleClass>
+            <String fx:value="h2" />
+            <String fx:value="strong" />
+         </styleClass>
+         <VBox.margin>
+            <Insets bottom="16.0" />
+         </VBox.margin>
+      </Text>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" text="Name" />
+                  <TextField fx:id="name" promptText="Name" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" text="Email" />
+                  <TextField fx:id="email" promptText="ex: mail@example.com" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" text="Tel" />
+                  <TextField fx:id="tel" promptText="ex: 06004556" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" text="Passcode" />
+                  <TextField fx:id="passcode" promptText="ex: 45665" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" text="Image" />
+                  <TextField fx:id="imagepath" promptText="image path" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#openFileChooser">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-info" />
+                     </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/icons/image.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox spacing="12.0">
+               <children>
+                  <Label prefWidth="120.0" />
+                  <CheckBox fx:id="active" mnemonicParsing="false" selected="true" text="Active" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#saveUser" text="Save">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-primary" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons/save.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
