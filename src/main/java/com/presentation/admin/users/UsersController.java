@@ -57,11 +57,7 @@ public class UsersController {
 
 
         // Create and populate the data
-        users = FXCollections.observableArrayList(
-                new User(1L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true),
-                new User(2L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true),
-                new User(3L, "John Doe", "email@gmail.com", "123456789", "1234", "imagePath", true)
-        );
+        users = FXCollections.observableArrayList(usersService.getAllUsers());
 
         // Set the data in the TableView
         usersTableView.setItems(users);

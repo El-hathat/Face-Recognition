@@ -12,7 +12,8 @@ public class UsersServiceImpl implements IUsersService {
 
     @Override
     public List<User> getAllUsers() {
-        return userDao.findAll();
+        List<User> users = userDao.findAll();
+        return (users == null ? List.of() : users);
     }
 
     @Override

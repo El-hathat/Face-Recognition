@@ -109,7 +109,7 @@ public class AddUserController {
             showErrorAlert("Phone number is invalid");
         } else if (!passcodeStr.matches(AppConfig.PASSCODE_REGEX)) {
             showErrorAlert("Passcode is invalid");
-        } else if (!imagePathStr.isBlank()) {
+        } else if (imagePathStr.isBlank()) {
             showErrorAlert("Image is required");
         } else {
             user.setName(nameStr);
