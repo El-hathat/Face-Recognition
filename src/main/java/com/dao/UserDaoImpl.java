@@ -65,16 +65,38 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public boolean update(User entity) {
-        return false;
+        try {
+            ps = conn.prepareStatement("UPDATE " + TABLE_NAME + " SET name = ?, email = ?, tel = ?, passCode = ?, imagePath = ?, active = ? WHERE id = ?");
+            ps.setString(1, entity.getName());
+            ps.setString(2, entity.getEmail());
+            ps.setString(3, entity.getTel());
+            ps.setString(4, entity.getPassCode());
+            ps.setString(5, entity.getImagePath());
+            ps.setBoolean(6, entity.isActive());
+            ps.setLong(7, entity.getId());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean delete(User entity) {
-        return false;
+        return deleteById(entity.getId());
     }
 
     @Override
     public boolean deleteById(Long entityId) {
-        return false;
+        try {
+            ps = conn.prepareStatement("DELETE FROM " + TABLE_NAME + " WHERE id = ?");
+            ps.setLong(1, entityId);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

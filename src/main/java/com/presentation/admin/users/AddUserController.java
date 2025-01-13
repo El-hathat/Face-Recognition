@@ -116,28 +116,6 @@ public class AddUserController {
             showErrorAlert("Image is required");
         } else {
 
-            File imagePath = new File(imagePathStr);
-            if (imagePath.exists() && imagePath.isFile()){
-                // Define the default image directory
-                File defaultDir = new File(AppConfig.USERS_IMAGE_PATH);
-                if (!defaultDir.exists()) {
-                    defaultDir.mkdirs();
-                }
-
-                // Copy the image to the default directory
-                imagePathStr = AppConfig.USERS_IMAGE_PATH + imagePath.getName();
-                File destFile = new File(imagePathStr);
-                try {
-                    Files.copy(imagePath.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    showErrorAlert("Failed to copy image to default directory");
-                    return;
-                }
-
-            }else {
-                showErrorAlert("Image is invalid");
-            }
-
             user.setName(nameStr);
             user.setEmail(emailStr);
             user.setTel(telStr);
@@ -148,7 +126,7 @@ public class AddUserController {
             if (usersService.addUser(user)) {
                 showSuccessAlert("User saved successfully");
             } else {
-                showErrorAlert("An error occurred while saving the user");
+                showErrorAlert("An error occurred while saving the user, please try again");
             }
         }
 
