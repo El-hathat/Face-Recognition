@@ -22,6 +22,8 @@ public class AppConfig {
     public static final String NAME_REGEX = "[a-zA-Z]{3,40}";
     public static final String PASSCODE_REGEX = "[0-9]{4,6}|.{0}";
 
+    public static final String USERS_IMAGE_PATH = "data/images/users/";
+
     public static final IAdminAuthService ADMIN_AUTH_SERVICE = new AdminAuthServiceImpl();
 
     public static final IUsersService USERS_SERVICE = new UsersServiceImpl();
