@@ -9,17 +9,20 @@
 <?import javafx.scene.text.Text?>
 <?import java.lang.*?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.users.ViewUserController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.users.ViewUserController">
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User information">
+        <Label text="User information">
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <padding>
+                <Insets bottom="32.0" top="24.0" />
+            </padding>
             <styleClass>
                 <String fx:value="h2" />
                 <String fx:value="strong" />
             </styleClass>
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
-        </Text>
+        </Label>
         <ImageView fx:id="userImage" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/app-logo.png" />

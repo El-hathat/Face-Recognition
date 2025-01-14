@@ -1,34 +1,39 @@
 package com.presentation.admin;
 
-import com.services.auth.AdminSession;
-import com.services.auth.IAdminAuthService;
+import com.presentation.admin.navigation.Navigation;
+import com.presentation.admin.navigation.Route;
+import com.presentation.admin.navigation.RouteGroup;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class AdminApp extends Application {
 
-    public static Stage primaryStage = null;
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        primaryStage = stage;
 
-        // Load the reusable component from FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/admin/auth/auth.fxml"));
+        HBox rootHost = new HBox();
 
+        // create auth route group
+        RouteGroup authRoutes = new RouteGroup("auth", rootHost, false);
+        authRoutes.addRoute(new Route("login", "/com/admin/auth/auth.fxml", false));
 
-        // Load the root layout from the FXML
-        Pane root = loader.load();
+        // create app route group
+        RouteGroup appRoutes = new RouteGroup("app", rootHost, true);
+        appRoutes.addRoute(new Route("main", "/com/admin/app.fxml"));
+
+        // Add the route group to the navigation
+        Navigation.addRouteGroups(authRoutes, appRoutes);
+
+        // Load the auth route
+        Navigation.goTo("auth", "login");
 
         // Set up the scene and stage
-        Scene scene = new Scene(root, AppConfig.WINDOW_WIDTH, AppConfig.WINDOW_HEIGHT);
+        Scene scene = new Scene(rootHost, AppConfig.WINDOW_WIDTH, AppConfig.WINDOW_HEIGHT);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets().add(getClass().getResource("/com/css/styles.css").toExternalForm());
 

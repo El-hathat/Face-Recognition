@@ -41,4 +41,8 @@
     -fx-background-color:  #0061ca; /* Change background when pressed */
 }
 
+.vertical-menu-item.selected {
+    -fx-background-color: #0056b3; /* Change background when selected */
+}
+
 

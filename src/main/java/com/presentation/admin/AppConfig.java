@@ -13,10 +13,6 @@ public class AppConfig {
 
     public static final int WINDOW_WIDTH = 900;
 
-    public static final String ADMIN_USERNAME_REGEX = "[a-zA-Z0-9_]{3,}";
-
-    public static final String ADMIN_PASSWORD_REGEX = "[a-zA-Z0-9_]{8,}";
-
     public static final String EMAIL_REGEX = "[a-zA-Z0-9_]+@[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+";
     public static final String PHONE_NUMBER_REGEX = "0[67][0-9]{8}";
     public static final String NAME_REGEX = "[a-zA-Z -]{3,40}";

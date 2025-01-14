@@ -1,54 +1,92 @@
 package com.presentation.admin;
 
 
+import com.presentation.admin.navigation.Navigation;
+import com.presentation.admin.navigation.Route;
+import com.presentation.admin.navigation.RouteGroup;
+import com.services.auth.AdminSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
 public class AppController {
 
-    public static BorderPane MAIN_BORDER_PANEL = null;
 
     @FXML
-    public BorderPane mainBorderPane;
+    private Button buttonSettings;
+
+    @FXML
+    private Button buttonUsers;
+
+    @FXML
+    private Button buttonAccess;
+
+    @FXML
+    private Button buttonDashboard;
+
+    @FXML
+    private HBox navHost;
 
     @FXML
     public void initialize() {
         // This method is automatically called after the FXML is loaded
+
+        RouteGroup mainRoutes = new RouteGroup("main", navHost, true);
+
+        // add routes to the main route group
+        mainRoutes.addRoute(new Route("dashboard", "/com/admin/dashboard/dashboard.fxml"));
+        mainRoutes.addRoute(new Route("users", "/com/admin/users/users.fxml"));
+        mainRoutes.addRoute(new Route("access", "/com/admin/access/access.fxml"));
+        mainRoutes.addRoute(new Route("settings", "/com/admin/settings/settings.fxml"));
+
+        // add the main route group to the navigation
+        Navigation.addRouteGroup(mainRoutes);
+
+        // load the dashboard
         dashboardOnAction(null);
 
-        MAIN_BORDER_PANEL = mainBorderPane;
     }
 
     @FXML
     void dashboardOnAction(ActionEvent event) {
-        loadFXMLContent("/com/admin/dashboard.fxml");
+        selectButton(buttonDashboard);
+        Navigation.goTo("main", "dashboard");
     }
 
     @FXML
     void usersOnAction(ActionEvent event) {
-        loadFXMLContent("/com/admin/users/users.fxml");
+        selectButton(buttonUsers);
+        Navigation.goTo("main", "users");
     }
 
     @FXML
-    void reportsOnAction(ActionEvent event) {
-
+    void accessOnAction(ActionEvent event) {
+        selectButton(buttonAccess);
+        Navigation.goTo("main", "access");
     }
 
     @FXML
     void settingsOnAction(ActionEvent event) {
-
+        selectButton(buttonSettings);
+        Navigation.goTo("main", "settings");
     }
 
-    private void loadFXMLContent(String fxmlFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Pane newContent = loader.load();
-            mainBorderPane.setCenter(newContent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    void logoutOnAction(ActionEvent event) {
+        // Clear the session
+        AdminSession.clearSession();
+
+        // Load the login page
+        Navigation.goTo("auth", "login");
+    }
+
+    private void selectButton(Button button) {
+        buttonDashboard.getStyleClass().remove("selected");
+        buttonUsers.getStyleClass().remove("selected");
+        buttonAccess.getStyleClass().remove("selected");
+        buttonSettings.getStyleClass().remove("selected");
+
+        button.getStyleClass().add("selected");
     }
 }

@@ -3,6 +3,9 @@ package com.presentation.admin.users;
 import com.dao.entities.User;
 import com.presentation.admin.AppConfig;
 import com.presentation.admin.AppController;
+import com.presentation.admin.navigation.Navigation;
+import com.presentation.admin.navigation.Route;
+import com.presentation.admin.navigation.RouteGroup;
 import com.services.users.IUsersService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,6 +44,10 @@ public class UsersController {
 
     @FXML
     public void initialize() {
+
+        // Add routes to the navigation
+        Navigation.addRouteToGroup("main", new Route("users:view", "/com/admin/users/view.fxml", false));
+        Navigation.addRouteToGroup("main", new Route("users:add", "/com/admin/users/add.fxml", false));
 
         // Set custom placeholder
         Label noUserLabel = new Label("No user is found.");
@@ -83,7 +90,7 @@ public class UsersController {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
                 SharedData.setUserId(selectedPerson.getId());
-                loadFXMLContent("/com/admin/users/view.fxml");
+                Navigation.goTo("main", "users:view");
                 System.out.println("View: " + selectedPerson.getName());
             }
         });
@@ -92,7 +99,7 @@ public class UsersController {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
                 SharedData.setUserId(selectedPerson.getId());
-                loadFXMLContent("/com/admin/users/view.fxml");
+                Navigation.goTo("main", "users:view");
                 System.out.println("Update: " + selectedPerson.getName());
             }
         });
@@ -123,19 +130,9 @@ public class UsersController {
 
     @FXML
     void addNewUser(ActionEvent event) {
-        loadFXMLContent("/com/admin/users/add.fxml");
-
+        Navigation.goTo("main", "users:add");
     }
 
-    private void loadFXMLContent(String fxmlFile) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Pane newContent = loader.load();
-            AppController.MAIN_BORDER_PANEL.setCenter(newContent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
 

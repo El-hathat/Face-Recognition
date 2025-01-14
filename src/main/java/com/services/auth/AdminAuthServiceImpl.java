@@ -18,6 +18,10 @@ public class AdminAuthServiceImpl implements IAdminAuthService {
     @Override
     public boolean login(String username, String password) {
 
+        if (username.isBlank() || password.isBlank()) {
+            return false;
+        }
+
         // begin login proccess
 
         // get salt

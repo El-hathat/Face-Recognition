@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.auth.AuthController">
+<BorderPane prefHeight="580.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.auth.AuthController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -20,13 +20,13 @@
                         <Image url="@../../images/app-logo.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="username" maxWidth="350.0" promptText="Nom d'utilisateur" styleClass="form-control">
+                  <TextField fx:id="username" maxWidth="350.0" onKeyPressed="#handleEnterKeyPress" promptText="Nom d'utilisateur" styleClass="form-control">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="password" maxWidth="350.0" promptText="Mot de passe" styleClass="form-control" />
-                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#login" text="S'authentifier">
+                  <PasswordField fx:id="password" maxWidth="350.0" onKeyPressed="#handleEnterKeyPress" promptText="Mot de passe" styleClass="form-control" />
+                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#onActionLogin" onKeyPressed="#handleEnterKeyPress" text="S'authentifier">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-primary" />

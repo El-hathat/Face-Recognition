@@ -1,21 +1,19 @@
 package com.presentation.admin.auth;
 
-import com.presentation.admin.AdminApp;
 import com.presentation.admin.AppConfig;
+import com.presentation.admin.navigation.Navigation;
 import com.services.auth.IAdminAuthService;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import org.kordamp.bootstrapfx.BootstrapFX;
 
 public class AuthController {
 
@@ -41,8 +39,18 @@ public class AuthController {
     private TextField username;
 
     @FXML
-    void login(ActionEvent event) {
+    public void handleEnterKeyPress(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")) {
+            login();
+        }
+    }
 
+    @FXML
+    void onActionLogin(ActionEvent event) {
+        login();
+    }
+
+    private void login() {
         username.setDisable(true);
         password.setDisable(true);
         loginBtn.setDisable(true);
@@ -62,7 +70,7 @@ public class AuthController {
             String passwordStr = password.getText();
 
 
-            /*try {
+            /* try {
                 String salt = PasswordHashing.generateSalt();
                 String hashedPassword = PasswordHashing.hashPassword(passwordStr, salt);
 
@@ -72,14 +80,14 @@ public class AuthController {
 
             } catch (NoSuchAlgorithmException e) {
                 showErrorAlert(e.getMessage());
-            }*/ // Commented out for the sake of the demo
+            } */ // Commented out for the sake of the demo
 
             if (authService.login(usernameStr, passwordStr)) {
 
                 showSuccessAlert("Connexion réussie, redirection vers le tableau de bord");
 
                 PauseTransition goToAdmin = new PauseTransition(Duration.seconds(.5));
-                goToAdmin.setOnFinished(event3 -> goToAdminApp());
+                goToAdmin.setOnFinished(event3 -> Navigation.goTo("app", "main"));
                 goToAdmin.play();
 
             } else {
@@ -91,30 +99,6 @@ public class AuthController {
         pause.play();
     }
 
-    private void goToAdminApp() {
-        if (authService.isLogged()) {
-            showErrorAlert("Vous n'êtes pas connecté");
-            return;
-        }
-        // Load the admin app
-        try {
-            // Load the second scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/admin/app.fxml"));
-            Scene scene = new Scene(loader.load(), AppConfig.WINDOW_WIDTH, AppConfig.WINDOW_HEIGHT);
-            // Set up the scene and stage
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            scene.getStylesheets().add(getClass().getResource("/com/css/styles.css").toExternalForm());
-
-            // Get the current stage
-            if (AdminApp.primaryStage != null)
-                AdminApp.primaryStage.setScene(scene);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
     private void showInfoAlert(String message) {
         alertMessage.setText(message);
@@ -136,9 +120,5 @@ public class AuthController {
 
     private void hideAlert() {
         alertContainer.setVisible(false);
-    }
-
-    private boolean isLoginValid(String username, String password) {
-        return username.matches(AppConfig.ADMIN_USERNAME_REGEX) && password.matches(AppConfig.ADMIN_PASSWORD_REGEX);
     }
 }
