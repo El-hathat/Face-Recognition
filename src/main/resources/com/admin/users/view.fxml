@@ -11,18 +11,31 @@
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.users.ViewUserController">
     <children>
-        <Label text="User information">
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
-            <padding>
-                <Insets bottom="32.0" top="24.0" />
-            </padding>
-            <styleClass>
-                <String fx:value="h2" />
-                <String fx:value="strong" />
-            </styleClass>
-        </Label>
+      <HBox alignment="CENTER_LEFT" spacing="20.0">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goBack" prefWidth="40.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-cursor: hand;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons/50px/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label text="User information">
+               <padding>
+                  <Insets left="16.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="h2" />
+                  <String fx:value="strong" />
+               </styleClass>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="32.0" top="24.0" />
+         </padding>
+      </HBox>
         <ImageView fx:id="userImage" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/app-logo.png" />

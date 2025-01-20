@@ -2,19 +2,16 @@ package com.presentation.admin.users;
 
 import com.dao.entities.User;
 import com.presentation.admin.AppConfig;
-import com.presentation.admin.AppController;
-import com.presentation.admin.navigation.Navigation;
-import com.presentation.admin.navigation.Route;
-import com.presentation.admin.navigation.RouteGroup;
+import com.presentation.outils.SharedData;
+import com.presentation.outils.navigation.Navigation;
+import com.presentation.outils.navigation.RouteGroup;
 import com.services.users.IUsersService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 
 public class UsersController {
 
@@ -45,9 +42,16 @@ public class UsersController {
     @FXML
     public void initialize() {
 
+        // RouteGroup
+        RouteGroup main = Navigation.getRouteGroup("main");
+
+        // add routes
+        main.addRoute("users:view", "/com/admin/users/view.fxml");
+        main.addRoute("users:add", "/com/admin/users/add.fxml");
+
         // Add routes to the navigation
-        Navigation.addRouteToGroup("main", new Route("users:view", "/com/admin/users/view.fxml", false));
-        Navigation.addRouteToGroup("main", new Route("users:add", "/com/admin/users/add.fxml", false));
+        Navigation.addRouteGroup(main);
+
 
         // Set custom placeholder
         Label noUserLabel = new Label("No user is found.");
@@ -89,18 +93,16 @@ public class UsersController {
         viewItem.setOnAction(event -> {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
-                SharedData.setUserId(selectedPerson.getId());
-                Navigation.goTo("main", "users:view");
-                System.out.println("View: " + selectedPerson.getName());
+                SharedData.putLong("selected:user:id", selectedPerson.getId());
+                Navigation.pushToBackStackAndGoTo("main", "users:view");
             }
         });
 
         updateItem.setOnAction(event -> {
             User selectedPerson = usersTableView.getSelectionModel().getSelectedItem();
             if (selectedPerson != null) {
-                SharedData.setUserId(selectedPerson.getId());
-                Navigation.goTo("main", "users:view");
-                System.out.println("Update: " + selectedPerson.getName());
+                SharedData.putLong("selected:user:id", selectedPerson.getId());
+                Navigation.pushToBackStackAndGoTo("main", "users:view");
             }
         });
 
@@ -130,9 +132,13 @@ public class UsersController {
 
     @FXML
     void addNewUser(ActionEvent event) {
-        Navigation.goTo("main", "users:add");
+        Navigation.pushToBackStackAndGoTo("main", "users:add");
     }
 
+    @FXML
+    void refreshUserList(ActionEvent event) {
+        users.setAll(usersService.getAllUsers());
+    }
 
 }
 

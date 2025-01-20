@@ -2,6 +2,7 @@ package com.presentation.admin.users;
 
 import com.dao.entities.User;
 import com.presentation.admin.AppConfig;
+import com.presentation.outils.navigation.Navigation;
 import com.services.users.IUsersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,9 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 
 public class AddUserController {
 
@@ -154,5 +152,10 @@ public class AddUserController {
         alertContainer.setVisible(false);
     }
 
+
+    @FXML
+    void goBack(ActionEvent event) {
+        Navigation.goBack();
+    }
 
 }

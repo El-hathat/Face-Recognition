@@ -3,13 +3,14 @@ package com.dao.entities;
 public class User {
     private Long id;
     private String name;
-    private  String email;
+    private String email;
     private String tel;
     private String passCode;
     private String imagePath;
     private boolean active;
 
-    public User(){}
+    public User() {
+    }
 
     public User(Long id, String name, String email, String tel, String passCode, String imagePath, boolean isActive) {
         this.id = id;
@@ -75,5 +76,10 @@ public class User {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

@@ -1,8 +1,7 @@
 package com.presentation.admin;
 
-import com.presentation.admin.navigation.Navigation;
-import com.presentation.admin.navigation.Route;
-import com.presentation.admin.navigation.RouteGroup;
+import com.presentation.outils.navigation.Navigation;
+import com.presentation.outils.navigation.RouteGroup;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -20,11 +19,11 @@ public class AdminApp extends Application {
 
         // create auth route group
         RouteGroup authRoutes = new RouteGroup("auth", rootHost, false);
-        authRoutes.addRoute(new Route("login", "/com/admin/auth/auth.fxml", false));
+        authRoutes.addRoute("login", "/com/admin/auth/auth.fxml");
 
         // create app route group
         RouteGroup appRoutes = new RouteGroup("app", rootHost, true);
-        appRoutes.addRoute(new Route("main", "/com/admin/app.fxml"));
+        appRoutes.addRoute("main", "/com/admin/app.fxml");
 
         // Add the route group to the navigation
         Navigation.addRouteGroups(authRoutes, appRoutes);

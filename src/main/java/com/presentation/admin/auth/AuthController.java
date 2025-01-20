@@ -1,7 +1,7 @@
 package com.presentation.admin.auth;
 
 import com.presentation.admin.AppConfig;
-import com.presentation.admin.navigation.Navigation;
+import com.presentation.outils.navigation.Navigation;
 import com.services.auth.IAdminAuthService;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;

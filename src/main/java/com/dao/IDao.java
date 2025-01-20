@@ -17,5 +17,7 @@ public interface IDao<T, K> {
 
     boolean deleteById(K entityId);
 
+    int count();
+
 
 }

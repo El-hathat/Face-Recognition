@@ -22,7 +22,20 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public User findOne(Long id) {
-        return null;
+
+        try {
+            ps = conn.prepareStatement("SELECT * FROM " + TABLE_NAME + " WHERE id = ?");
+            ps.setLong(1, id);
+            ResultSet set = ps.executeQuery();
+            if (set.next()) {
+                return new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("tel"), set.getString("passcode"), set.getString("imagepath"), set.getBoolean("active"));
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public List<User> findAll() {
@@ -98,5 +111,22 @@ public class UserDaoImpl implements IUserDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public int count() {
+
+        try {
+            st = conn.createStatement();
+            String query = "SELECT COUNT(*) FROM " + TABLE_NAME;
+            ResultSet set = st.executeQuery(query);
+            if (set.next()) {
+                return set.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 }

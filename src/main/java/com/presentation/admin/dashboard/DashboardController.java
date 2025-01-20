@@ -1,17 +1,26 @@
 package com.presentation.admin.dashboard;
 
+import com.presentation.admin.AppConfig;
 import com.services.auth.AdminSession;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 public class DashboardController {
 
     @FXML
-    public Text textCenter;
+    private Label userCount;
+
+    @FXML
+    private Label accessLogsCount;
 
     @FXML
     public void initialize() {
-        // This method is automatically called after the FXML is loaded
-        textCenter.setText(String.format("Welcome %s, to the Dashboard", AdminSession.getInstance().getAdmin().getUsername()));
+             // Set the user count
+        Platform.runLater(() -> {
+            userCount.setText(String.valueOf(AppConfig.USERS_SERVICE.getUserCount()));
+            accessLogsCount.setText(String.valueOf(AppConfig.ACCESS_LOG_SERVICE.getAccessLogCount()));
+        });
     }
 }

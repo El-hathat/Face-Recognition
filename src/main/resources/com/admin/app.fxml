@@ -65,18 +65,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonSettings" alignment="CENTER" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#settingsOnAction" styleClass="vertical-menu-item" text="Settings">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons/settings.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </VBox>
             <Button alignment="CENTER" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutOnAction" styleClass="vertical-menu-item" text="logout">

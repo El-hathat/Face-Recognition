@@ -1,9 +1,8 @@
 package com.presentation.admin;
 
 
-import com.presentation.admin.navigation.Navigation;
-import com.presentation.admin.navigation.Route;
-import com.presentation.admin.navigation.RouteGroup;
+import com.presentation.outils.navigation.Navigation;
+import com.presentation.outils.navigation.RouteGroup;
 import com.services.auth.AdminSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,10 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 public class AppController {
-
-
-    @FXML
-    private Button buttonSettings;
 
     @FXML
     private Button buttonUsers;
@@ -35,10 +30,9 @@ public class AppController {
         RouteGroup mainRoutes = new RouteGroup("main", navHost, true);
 
         // add routes to the main route group
-        mainRoutes.addRoute(new Route("dashboard", "/com/admin/dashboard/dashboard.fxml"));
-        mainRoutes.addRoute(new Route("users", "/com/admin/users/users.fxml"));
-        mainRoutes.addRoute(new Route("access", "/com/admin/access/access.fxml"));
-        mainRoutes.addRoute(new Route("settings", "/com/admin/settings/settings.fxml"));
+        mainRoutes.addRoute("dashboard", "/com/admin/dashboard/dashboard.fxml");
+        mainRoutes.addRoute("users", "/com/admin/users/users.fxml");
+        mainRoutes.addRoute("access", "/com/admin/access/access.fxml");
 
         // add the main route group to the navigation
         Navigation.addRouteGroup(mainRoutes);
@@ -66,11 +60,6 @@ public class AppController {
         Navigation.goTo("main", "access");
     }
 
-    @FXML
-    void settingsOnAction(ActionEvent event) {
-        selectButton(buttonSettings);
-        Navigation.goTo("main", "settings");
-    }
 
     @FXML
     void logoutOnAction(ActionEvent event) {
@@ -85,7 +74,6 @@ public class AppController {
         buttonDashboard.getStyleClass().remove("selected");
         buttonUsers.getStyleClass().remove("selected");
         buttonAccess.getStyleClass().remove("selected");
-        buttonSettings.getStyleClass().remove("selected");
 
         button.getStyleClass().add("selected");
     }
