@@ -10,10 +10,12 @@ public interface IUsersService {
 
     boolean addUser(User user);
 
-    boolean updateUser(User user);
+    boolean updateUser(User oldUser, User newUser);
 
     boolean deleteUser(User user);
 
     User getUser(long id);
+
+    int getUserCount();
 
 }
