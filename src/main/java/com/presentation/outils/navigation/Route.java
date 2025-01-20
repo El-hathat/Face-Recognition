@@ -1,4 +1,4 @@
-package com.presentation.admin.navigation;
+package com.presentation.outils.navigation;
 
 import javafx.scene.layout.Pane;
 
@@ -7,17 +7,21 @@ public class Route {
     private String name;
     private String path;
     private Pane content;
-    private boolean chachable;
+    private RouteGroup routeGroup;
 
-    public Route(String name, String path) {
+    public Route(RouteGroup routeGroup,String name, String path) {
+        this.routeGroup = routeGroup;
         this.name = name;
         this.path = path;
-        this.chachable = true;
     }
 
-    public Route(String name, String path, boolean chachable) {
-        this(name, path);
-        this.chachable = chachable;
+
+    public RouteGroup getRouteGroup() {
+        return routeGroup;
+    }
+
+    public void setRouteGroup(RouteGroup routeGroup) {
+        this.routeGroup = routeGroup;
     }
 
     public String getName() {
@@ -36,9 +40,6 @@ public class Route {
         this.content = content;
     }
 
-    public boolean isChachable() {
-        return chachable;
-    }
 }
 
 

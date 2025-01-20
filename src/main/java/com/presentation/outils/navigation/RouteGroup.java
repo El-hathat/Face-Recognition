@@ -1,4 +1,4 @@
-package com.presentation.admin.navigation;
+package com.presentation.outils.navigation;
 
 import javafx.scene.layout.Pane;
 
@@ -20,8 +20,12 @@ public class RouteGroup {
         routes = new HashMap<>();
     }
 
-    public void addRoute(Route route) {
-        routes.put(route.getName(), route);
+    public void addRoute(String name, String path) {
+        routes.put(name, new Route(this, name, path));
+    }
+
+    public Route getRoute(String name) {
+        return routes.get(name);
     }
 
     public String getName() {
@@ -39,4 +43,5 @@ public class RouteGroup {
     public boolean isAuthProtected() {
         return authProtected;
     }
+
 }
