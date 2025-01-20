@@ -5,7 +5,7 @@ import com.facerecognition.MatToImageConverter;
 import com.presentation.client.AppConfig;
 import com.presentation.outils.SharedData;
 import com.presentation.outils.navigation.Navigation;
-import com.services.IFaceRecognitionService;
+import com.services.facerecognition.IFaceRecognitionService;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
