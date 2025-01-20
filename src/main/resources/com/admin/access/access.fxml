@@ -11,7 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.access.AccessController">
     <children>
         <Label text="Access">
          <VBox.margin>
@@ -25,6 +25,30 @@
             <String fx:value="strong" />
          </styleClass>
       </Label>
+      <HBox spacing="10.0">
+         <children>
+            <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#refreshAccessLogList">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-success" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <TableView fx:id="accessLogTable">
+        <columns>
+          <TableColumn fx:id="log_id" maxWidth="-1.0" minWidth="150.0" prefWidth="-1.0" text="id" />
+          <TableColumn fx:id="user_name" maxWidth="-1.0" minWidth="200.0" prefWidth="-1.0" text="Name" />
+            <TableColumn fx:id="access_date" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" text="Date" />
+        </columns>
+      </TableView>
     </children>
    <padding>
       <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />

@@ -1,5 +1,7 @@
 package com.presentation.admin;
 
+import com.services.accesslog.AccessLogServiceImpl;
+import com.services.accesslog.IAccessLogService;
 import com.services.auth.AdminAuthServiceImpl;
 import com.services.auth.IAdminAuthService;
 import com.services.users.IUsersService;
@@ -23,6 +25,8 @@ public class AppConfig {
     public static final IAdminAuthService ADMIN_AUTH_SERVICE = new AdminAuthServiceImpl();
 
     public static final IUsersService USERS_SERVICE = new UsersServiceImpl();
+
+    public static final IAccessLogService ACCESS_LOG_SERVICE = new AccessLogServiceImpl();
 
 
 }
