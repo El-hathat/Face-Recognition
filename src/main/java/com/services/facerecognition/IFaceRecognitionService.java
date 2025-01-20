@@ -1,4 +1,4 @@
-package com.services;
+package com.services.facerecognition;
 
 
 import com.dao.entities.User;

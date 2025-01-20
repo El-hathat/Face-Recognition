@@ -39,4 +39,6 @@ module com.facerecognition {
     opens com.presentation.outils to javafx.fxml;
 
     opens com.presentation.admin.access to javafx.fxml;
+    exports com.services.facerecognition;
+    opens com.services.facerecognition to javafx.fxml;
 }

@@ -1,14 +1,10 @@
 package com.presentation.client;
 
-import com.dao.entities.User;
-import com.services.IFaceRecognitionService;
+import com.services.facerecognition.IFaceRecognitionService;
 import com.services.accesslog.AccessLogServiceImpl;
 import com.services.accesslog.IAccessLogService;
-import com.services.auth.AdminAuthServiceImpl;
-import com.services.auth.IAdminAuthService;
 import com.services.users.IUsersService;
 import com.services.users.UsersServiceImpl;
-import org.opencv.core.Mat;
 
 import static java.lang.Thread.sleep;
 
