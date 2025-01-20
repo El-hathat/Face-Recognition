@@ -6,6 +6,7 @@ module com.facerecognition {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.controls;
     requires mysql.connector.j;
+    requires java.desktop;
 
     opens com.facerecognition to javafx.fxml;
 
@@ -29,4 +30,13 @@ module com.facerecognition {
 
     opens com.presentation.admin.users to javafx.fxml;
     opens com.dao.entities to javafx.base;
+
+    opens com.presentation.client.welcome to javafx.fxml;
+    opens com.dao to javafx.base;
+
+    opens com.presentation.client.facescan to javafx.fxml;
+    exports com.presentation.outils;
+    opens com.presentation.outils to javafx.fxml;
+
+    opens com.presentation.admin.access to javafx.fxml;
 }

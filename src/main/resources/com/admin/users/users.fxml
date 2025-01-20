@@ -21,23 +21,37 @@
             <String fx:value="strong" />
          </styleClass>
       </Label>
-
-      <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#addNewUser" text="Add">
-         <styleClass>
-            <String fx:value="btn" />
-            <String fx:value="btn-primary" />
-         </styleClass>
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/icons/add.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <VBox.margin>
-            <Insets right="8.0" />
-         </VBox.margin>
-      </Button>
+      <HBox spacing="10.0">
+         <children>
+      
+            <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#addNewUser" text="Add">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-primary" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#refreshUserList">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons/reload.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-success" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
       <TableView fx:id="usersTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="id" prefWidth="95.0" text="id" />

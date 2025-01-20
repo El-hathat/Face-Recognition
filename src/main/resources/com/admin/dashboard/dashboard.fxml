@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentation.admin.dashboard.DashboardController">
     <children>
         <Label text="Welcome, Admin!">
          <VBox.margin>
@@ -40,8 +40,8 @@
                               <Insets />
                            </VBox.margin>
                         </ImageView>
-                        <Label style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="h4" text="Registered Users" />
-                        <Label style="-fx-text-fill: white;" styleClass="strong" text="400" />
+                        <Label style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="h4" text="Users" />
+                        <Label fx:id="userCount" style="-fx-text-fill: white;" styleClass="strong" text="00" />
                      </children>
                      <padding>
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -57,14 +57,14 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Label style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="h4" text="Recent Logins" />
-                        <Label style="-fx-text-fill: white;" styleClass="strong" text="400" />
+                        <Label style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="h4" text="Logins" />
+                        <Label fx:id="accessLogsCount" style="-fx-text-fill: white;" styleClass="strong" text="00" />
                      </children>
                      <padding>
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </padding>
                   </VBox>
-                  <VBox spacing="10.0" style="-fx-background-color: red; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                  <VBox spacing="10.0" style="-fx-background-color: red; -fx-background-radius: 10;" visible="false" HBox.hgrow="ALWAYS">
                      <children>
                         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
