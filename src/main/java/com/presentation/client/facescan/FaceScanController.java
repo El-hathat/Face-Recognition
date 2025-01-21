@@ -46,8 +46,9 @@ public class FaceScanController implements FaceRecognitionListener {
 
         faceScan.stop();
 
-        showLoadingAlert("Recognizing user...");
+        Platform.runLater(() -> imageView.setImage(matToImage(image)));
 
+        showLoadingAlert("Recognizing user...");
 
         User user = faceRecognitionService.recognizeUser(image);
 
@@ -60,11 +61,9 @@ public class FaceScanController implements FaceRecognitionListener {
             return;
         }
 
-        Platform.runLater(() -> imageView.setImage(matToImage(image)));
-
         // Create a PauseTransition for 2 seconds
         // 2 seconds to mitigate the impact of password brute force attacks
-        PauseTransition pause = new PauseTransition(Duration.seconds(10));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(event2 -> {
 
 

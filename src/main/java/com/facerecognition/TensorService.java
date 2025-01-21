@@ -132,7 +132,7 @@ public class TensorService {
       float[] embeddings1 = runFaceNet(imageData1);
       float[] embeddings2 = runFaceNet(imageData2);
 
-      boolean areSame = areFacesSame(embeddings1, embeddings2, 0.65);
+      boolean areSame = areFacesSame(embeddings1, embeddings2, 0.4);
       System.out.println("Les visages sont les mêmes : " + areSame);
       return areSame;
     } catch (Exception e) {

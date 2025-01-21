@@ -38,20 +38,30 @@
             </ImageView>
          </children>
       </VBox>
-      <HBox alignment="CENTER" spacing="10.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label styleClass="strong" text="Logout on" />
-            <Label fx:id="timerText" text="30s">
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label styleClass="strong" text="Logout on" />
+                  <Label fx:id="timerText" text="30s">
+                     <styleClass>
+                        <String fx:value="text-warning" />
+                        <String fx:value="strong" />
+                     </styleClass>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+               </padding>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#goBackNow" text="Go back now">
                <styleClass>
-                  <String fx:value="text-warning" />
-                  <String fx:value="strong" />
+                  <String fx:value="btn-info" />
+                  <String fx:value="btn" />
                </styleClass>
-            </Label>
+            </Button>
          </children>
-         <padding>
-            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
-         </padding>
-      </HBox>
+      </VBox>
    </children>
    <padding>
       <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />

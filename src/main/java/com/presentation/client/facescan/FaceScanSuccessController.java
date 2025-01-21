@@ -8,6 +8,7 @@ import com.services.accesslog.IAccessLogService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ import java.nio.file.Path;
 
 public class FaceScanSuccessController {
 
+    private Timeline timeline;
     private int timeRemaining = 30;
 
     private User user;
@@ -52,7 +54,7 @@ public class FaceScanSuccessController {
     }
 
     private void startCountdown() {
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(
                         Duration.seconds(1), // Execute every second
                         event -> {
@@ -62,8 +64,8 @@ public class FaceScanSuccessController {
 
                                 if (timeRemaining == 0) {
                                     timerText.setText("Time's Up!");
-                                    // Redirect to the welcome screen
-                                    Navigation.goTo("main", "welcome");
+
+                                    goBackNow(null);
                                 }
                             }
                         }
@@ -72,6 +74,16 @@ public class FaceScanSuccessController {
 
         timeline.setCycleCount(timeRemaining); // Run for 30 cycles
         timeline.play();
+    }
+
+    @FXML
+    void goBackNow(ActionEvent event) {
+
+        // Stop the countdown
+        timeline.stop();
+
+        // Redirect to the welcome screen
+        Navigation.goTo("main", "welcome");
     }
 
 }

@@ -10,7 +10,7 @@ import org.opencv.videoio.VideoCapture;
 public class FaceScan implements Runnable {
 
 
-        // Load OpenCV native library
+    // Load OpenCV native library
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
@@ -71,8 +71,10 @@ public class FaceScan implements Runnable {
                     Imgproc.rectangle(frame, face.tl(), face.br(), new Scalar(0, 255, 0), 2);
                 }
 
-                // Notify the listener that a face has been detected
-                faceRecognitionListener.onFaceDetected(frame);
+                if (facesArray.length > 0) {
+                    // Notify the listener that a face has been detected
+                    faceRecognitionListener.onFaceDetected(frame);
+                }
 
             }
 
