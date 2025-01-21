@@ -48,7 +48,7 @@ public class FaceScan implements Runnable {
         Mat frame = new Mat();
         User user = null;
 
-        while (running) {
+        while (!Thread.currentThread().isInterrupted()) {
             // Capture a frame from the webcam
             camera.read(frame);
 
@@ -65,15 +65,14 @@ public class FaceScan implements Runnable {
             Rect[] facesArray = detectFaces(gray, faceCascade);
 
             // If faces are detected, crop and save the face region
-            if (facesArray != null) {
+            if (facesArray.length > 0) {
+
+                // Notify the listener that a face has been detected
+                faceRecognitionListener.onFaceDetected(frame);
+
                 for (Rect face : facesArray) {
                     // Draw a rectangle around the face
                     Imgproc.rectangle(frame, face.tl(), face.br(), new Scalar(0, 255, 0), 2);
-                }
-
-                if (facesArray.length > 0) {
-                    // Notify the listener that a face has been detected
-                    faceRecognitionListener.onFaceDetected(frame);
                 }
 
             }
@@ -86,6 +85,7 @@ public class FaceScan implements Runnable {
         // Release resources when stopping
         camera.release();
         System.out.println("FaceScan thread stopped.");
+
     }
 
     public void stop() {

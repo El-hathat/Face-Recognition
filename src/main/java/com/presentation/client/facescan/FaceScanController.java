@@ -6,7 +6,6 @@ import com.presentation.outils.SharedData;
 import com.presentation.outils.navigation.Navigation;
 import com.services.facerecognition.IFaceRecognitionService;
 import com.services.facerecognition.MatToImageConverter;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
@@ -14,14 +13,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import org.opencv.core.Mat;
 
 public class FaceScanController implements FaceRecognitionListener {
 
     private IFaceRecognitionService faceRecognitionService = AppConfig.FACE_RECOGNITION_SERVICE;
 
-    private FaceScan faceScan;
+    private Thread facescanThread;
+
+    private volatile boolean isRecognizing = false;
+
 
     @FXML
     private ImageView imageView;
@@ -44,33 +45,35 @@ public class FaceScanController implements FaceRecognitionListener {
     @Override
     public void onFaceDetected(Mat image) {
 
-        faceScan.stop();
-
-        Platform.runLater(() -> imageView.setImage(matToImage(image)));
-
-        showLoadingAlert("Recognizing user...");
-
-        User user = faceRecognitionService.recognizeUser(image);
-
-        if (user != null) {
-            SharedData.putObject("user", user);
-            showSuccessAlert("User recognized");
-        } else {
-            startFaceScan();
+        if (isRecognizing) {
             return;
         }
 
-        // Create a PauseTransition for 2 seconds
-        // 2 seconds to mitigate the impact of password brute force attacks
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(event2 -> {
+        isRecognizing = true;
 
-            Platform.runLater(() -> Navigation.goTo("main", "facescan:success"));
+        showLoadingAlert("Recognizing user...");
 
+        Thread recognizeUserThread = new Thread(() -> {
+
+            User user = faceRecognitionService.recognizeUser(image);
+
+            if (user != null) {
+
+                SharedData.putObject("user", user);
+                showSuccessAlert("User recognized");
+
+                facescanThread.interrupt();
+
+                Platform.runLater(() -> Navigation.goTo("main", "facescan:success"));
+
+            }else {
+                showLoadingAlert("Scanning for faces...");
+                isRecognizing = false;
+            }
         });
-        // Start the transition
-        pause.play();
 
+        recognizeUserThread.setDaemon(true);
+        recognizeUserThread.start();
 
     }
 
@@ -80,8 +83,8 @@ public class FaceScanController implements FaceRecognitionListener {
     }
 
     private void startFaceScan() {
-        faceScan = new FaceScan(this);
-        Thread facescanThread = new Thread(faceScan);
+
+        facescanThread = new Thread(new FaceScan(this));
         facescanThread.setDaemon(true);
         facescanThread.start();
 
