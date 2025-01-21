@@ -1,8 +1,7 @@
-package com.facerecognition;
+package com.services.facerecognition;
 
 import com.dao.UserDaoImpl;
 import com.dao.entities.User;
-import com.services.facerecognition.IFaceRecognitionService;
 import org.opencv.core.Mat;
 import java.util.List;
 

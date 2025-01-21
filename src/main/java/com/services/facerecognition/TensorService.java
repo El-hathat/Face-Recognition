@@ -1,4 +1,4 @@
-package com.facerecognition;
+package com.services.facerecognition;
 
 import com.presentation.client.AppConfig;
 import org.tensorflow.Tensor;

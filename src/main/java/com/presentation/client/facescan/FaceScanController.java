@@ -1,7 +1,7 @@
 package com.presentation.client.facescan;
 
 import com.dao.entities.User;
-import com.facerecognition.MatToImageConverter;
+import com.services.facerecognition.MatToImageConverter;
 import com.presentation.client.AppConfig;
 import com.presentation.outils.SharedData;
 import com.presentation.outils.navigation.Navigation;

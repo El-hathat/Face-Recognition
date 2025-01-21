@@ -1,6 +1,6 @@
 package com.presentation.client;
 
-import com.facerecognition.RecognitionInDB;
+import com.services.facerecognition.RecognitionInDB;
 import com.services.facerecognition.IFaceRecognitionService;
 import com.services.accesslog.AccessLogServiceImpl;
 import com.services.accesslog.IAccessLogService;

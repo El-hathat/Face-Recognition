@@ -1,4 +1,4 @@
-package com.facerecognition;
+package com.services.facerecognition;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelFormat;

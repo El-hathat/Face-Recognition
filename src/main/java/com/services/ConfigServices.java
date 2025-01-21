@@ -4,7 +4,7 @@ import com.dao.AdminDaoImpl;
 import com.dao.IAdminDao;
 import com.dao.IUserDao;
 import com.dao.UserDaoImpl;
-import com.facerecognition.RecognitionInDB;
+import com.services.facerecognition.RecognitionInDB;
 import com.services.facerecognition.IFaceRecognitionService;
 
 public class ConfigServices {
