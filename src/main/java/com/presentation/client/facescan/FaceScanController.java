@@ -1,11 +1,11 @@
 package com.presentation.client.facescan;
 
 import com.dao.entities.User;
-import com.services.facerecognition.MatToImageConverter;
 import com.presentation.client.AppConfig;
 import com.presentation.outils.SharedData;
 import com.presentation.outils.navigation.Navigation;
 import com.services.facerecognition.IFaceRecognitionService;
+import com.services.facerecognition.MatToImageConverter;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -56,7 +56,6 @@ public class FaceScanController implements FaceRecognitionListener {
             SharedData.putObject("user", user);
             showSuccessAlert("User recognized");
         } else {
-            showErrorAlert("User not recognized");
             startFaceScan();
             return;
         }
@@ -66,9 +65,7 @@ public class FaceScanController implements FaceRecognitionListener {
         PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(event2 -> {
 
-
             Platform.runLater(() -> Navigation.goTo("main", "facescan:success"));
-
 
         });
         // Start the transition
@@ -84,7 +81,11 @@ public class FaceScanController implements FaceRecognitionListener {
 
     private void startFaceScan() {
         faceScan = new FaceScan(this);
-        new Thread(faceScan).start();
+        Thread facescanThread = new Thread(faceScan);
+        facescanThread.setDaemon(true);
+        facescanThread.start();
+
+        showLoadingAlert("Scanning for faces...");
     }
 
     private Image matToImage(Mat mat) {
@@ -119,7 +120,7 @@ public class FaceScanController implements FaceRecognitionListener {
         });
     }
 
-    private void showLoadingAlert(String message){
+    private void showLoadingAlert(String message) {
         Platform.runLater(() -> {
             alertSpinner.setVisible(true);
             alertMessage.setText(message);
