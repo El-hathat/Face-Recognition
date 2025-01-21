@@ -9,10 +9,12 @@ import org.opencv.videoio.VideoCapture;
 
 public class FaceScan implements Runnable {
 
-    static {
+
         // Load OpenCV native library
+    static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
+
 
     private volatile boolean running = true;
     private VideoCapture camera;

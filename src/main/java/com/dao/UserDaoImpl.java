@@ -30,12 +30,12 @@ public class UserDaoImpl implements IUserDao {
             if (set.next()) {
                 return new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("tel"), set.getString("passcode"), set.getString("imagepath"), set.getBoolean("active"));
             }
-            return null;
+
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
-        }
 
+        }
+        return null;
     }
 
     public List<User> findAll() {

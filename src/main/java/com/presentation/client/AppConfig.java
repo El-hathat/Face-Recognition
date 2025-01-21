@@ -1,5 +1,6 @@
 package com.presentation.client;
 
+import com.facerecognition.RecognitionInDB;
 import com.services.facerecognition.IFaceRecognitionService;
 import com.services.accesslog.AccessLogServiceImpl;
 import com.services.accesslog.IAccessLogService;
@@ -21,8 +22,9 @@ public class AppConfig {
     public static final IUsersService USERS_SERVICE = new UsersServiceImpl();
 
     public static final String CASCADE_PATH = "src/main/resources/com/files/haarcascade_frontalface_alt.xml";
+    public static final String MODEL_PATH = "src/main/resources/com/files/facenet.pb";
 
     public static final IAccessLogService ACCESS_LOG_SERVICE = new AccessLogServiceImpl();
 
-    public static final IFaceRecognitionService FACE_RECOGNITION_SERVICE = null;
+    public static final IFaceRecognitionService FACE_RECOGNITION_SERVICE = new RecognitionInDB();
 }

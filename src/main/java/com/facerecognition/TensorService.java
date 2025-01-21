@@ -1,5 +1,6 @@
 package com.facerecognition;
 
+import com.presentation.client.AppConfig;
 import org.tensorflow.Tensor;
 import org.tensorflow.Session;
 
@@ -54,8 +55,7 @@ public class TensorService {
   private float[] runFaceNet(float[] imageData) {
     try (Graph graph = new Graph()) {
       // Charger le graphe du modèle depuis le fichier .pb
-      byte[] graphDef = Files.readAllBytes(Paths.get(
-          "C:/Users/lenovo/Desktop/ECOLE Projet/java project/facerecognition/src/main/java/com/facerecognition/20180408-102900.pb"));
+      byte[] graphDef = Files.readAllBytes(Paths.get(AppConfig.MODEL_PATH));
       graph.importGraphDef(graphDef);
 
       // Créer les tenseurs nécessaires
@@ -72,8 +72,8 @@ public class TensorService {
             .run()
             .get(0);
 
-        // Extraire les embeddings (vecteur de 512 dimensions)
-        float[][] embeddings = new float[1][512]; // Adapter à la taille correcte
+        // Extraire les embeddings (vecteur de 128 dimensions)
+        float[][] embeddings = new float[1][128]; // Adapter à la taille correcte
         output.copyTo(embeddings);
         return embeddings[0];
       }
@@ -132,7 +132,7 @@ public class TensorService {
       float[] embeddings1 = runFaceNet(imageData1);
       float[] embeddings2 = runFaceNet(imageData2);
 
-      boolean areSame = areFacesSame(embeddings1, embeddings2, 0.5);
+      boolean areSame = areFacesSame(embeddings1, embeddings2, 0.65);
       System.out.println("Les visages sont les mêmes : " + areSame);
       return areSame;
     } catch (Exception e) {
